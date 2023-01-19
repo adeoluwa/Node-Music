@@ -2,7 +2,7 @@ import { User } from '../DB/types';
 
 import { expressjwt } from 'express-jwt';
 
-import { NextFunction, Response } from 'express';
+import { NextFunction, Response  } from 'express';
 
 import getDb from '../DB';
 

@@ -6,7 +6,7 @@ import { User } from '../DB/types';
 
 import bcrypt from 'bcrypt';
 
-// import { Jwt } from 'jsonwebtoken';
+import  Jwt  from 'jsonwebtoken';
 
 const router = express.Router();
 
@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
   const db = getDb();
   const users = db.collection<User>('user');
 
- /* Finding a user in the database with the email that was sent in the request body. */
+  /* Finding a user in the database with the email that was sent in the request body. */
   const user = await users.findOne({
     email: req.body.email,
   });
@@ -56,7 +56,7 @@ router.post('/login', async (req, res) => {
   }
 
   /* Generating a JWT token. */
-  const accessToken = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+  const accessToken = Jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
   /* Sending a response back to the client with a status code of 200 and a JSON object with the
   accessToken. */
